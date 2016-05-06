@@ -1,6 +1,5 @@
-from wand.image import Image
-from wand.display import display
 from magicktools import Magicktools
+
 
 mt = Magicktools()
 filenames = ["img1.png", "img2.png","img3.png","img4.png"]

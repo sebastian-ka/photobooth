@@ -1,9 +1,7 @@
 from wand.image import Image
 from wand.color import Color
-from enum import import Enum
-from lxml.doctestcompare import strip
 
-class Layout(Enum):
+class Layout(object):
 	One = 1
 	Two = 2
 	Three = 3
@@ -11,18 +9,19 @@ class Layout(Enum):
 
 class Magicktools (object):
 	
-	def createStrip(self,layout = Layout.One, filenames = ["img.png"], s_width = 400, s_height = 800):
+	def createStrip(self,layout = Layout.Four, filenames = ["img.png"], s_width = 400, s_height = 800):
 		try:
-			if layout is Layout.One :
-				self.createStripOne(filenames, s_width, s_height)
-			if layout is Layout.Two :
-				self.createStripTwo(filenames, s_width, s_height)
-			if layout is Layout.Three :
-				self.createStripThree(filenames, s_width, s_height)
+			#if layout is Layout.One :
+				#self.createStripOne(filenames, s_width, s_height)
+			#if layout is Layout.Two :
+				#self.createStripTwo(filenames, s_width, s_height)
+			#if layout is Layout.Three :
+				#self.createStripThree(filenames, s_width, s_height)
 			if layout is Layout.Four :
 				self.createStripFour(filenames, s_width, s_height)
 						
-			
+		except Exception, err:
+			print(err)	
 			
 	
 	def createStripFour(self, filenames = ["img.png"], s_width = 400, s_height = 800):
@@ -66,6 +65,7 @@ class Magicktools (object):
 		return {'left':left,'top':top}
 	
 	def createStripThree(self, filenames = ["img.png"], s_width = 400, s_height = 800):
+		return None
 	
 	def createBackground(self, color = 'white', s_width = 400, s_height = 800):
 		try:

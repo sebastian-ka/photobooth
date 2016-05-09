@@ -1,9 +1,31 @@
 from wand.image import Image
 from wand.color import Color
+from enum import import Enum
+from lxml.doctestcompare import strip
+
+class Layout(Enum):
+	One = 1
+	Two = 2
+	Three = 3
+	Four = 4
 
 class Magicktools (object):
 	
-	def createStripFour(self, s_width = 400, s_height = 800, filenames = ["img.png"]):
+	def createStrip(self,layout = Layout.One, filenames = ["img.png"], s_width = 400, s_height = 800):
+		try:
+			if layout is Layout.One :
+				self.createStripOne(filenames, s_width, s_height)
+			if layout is Layout.Two :
+				self.createStripTwo(filenames, s_width, s_height)
+			if layout is Layout.Three :
+				self.createStripThree(filenames, s_width, s_height)
+			if layout is Layout.Four :
+				self.createStripFour(filenames, s_width, s_height)
+						
+			
+			
+	
+	def createStripFour(self, filenames = ["img.png"], s_width = 400, s_height = 800):
 		offset = 0.9
 		try:
 			with Color('white') as bg_c:
@@ -42,4 +64,18 @@ class Magicktools (object):
 		top  += int((1-offset)*0.3*pic_h)
 		
 		return {'left':left,'top':top}
+	
+	def createStripThree(self, filenames = ["img.png"], s_width = 400, s_height = 800):
+	
+	def createBackground(self, color = 'white', s_width = 400, s_height = 800):
+		try:
+			with Color(color) as bg_c:
+				with Image(width = s_width, height = s_height, background= bg_c) as strip:
+					return strip
+		except Exception, err:
+			print(err)
+					
+				
+		
+		
 		

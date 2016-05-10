@@ -8,27 +8,38 @@ class Layout(object):
 	Four = 4
 
 class Magicktools (object):
+	
+	#calls createStrip() but defines the layout automatically from the amount of given filenames
+	def createStripAuto(self, filenames = ["img.png"], s_width = 400, s_height = 800):
+		layout == Layout.One
+		if len(filenames) == 2 :
+			layout == Layout.Two
+		elif len(filenames) == 3 :
+			layout == Layout.Three
+		elif len(filenames) == 4 :
+			layout == Layout.Four
+		createStrip(layout, filenames,s_width,s_height)
+		
 	#creates a photostrip of either 1, two, 1x3, 2x2 pictures
 	#phtoto strips gets saved in working directory
 	#todo: option to add path, count files in array, crop pics not just resize
-	def createStrip(self,layout = Layout.Four, filenames = ["img.png"], s_width = 400, s_height = 800):
+	def createStrip(self, layout = Layout.One, filenames = ["img.png"], s_width = 400, s_height = 800):
 		bgColor = "white"
+		offset = 0.9
+		#default layout is Layout.One
 		picsPerRow = 1
 		picsPerCol = 1
-		if layout is Layout.One :
-			picsPerRow = 1
-			picsPerCol = 1
+				
 		if layout is Layout.Two :
 			picsPerRow = 1
 			picsPerCol = 2
-		if layout is Layout.Three :
+		elif layout is Layout.Three :
 			picsPerRow = 1
 			picsPerCol = 3
-		if layout is Layout.Four :
+		elif layout is layout.Four :
 			picsPerRow = 2
 			picsPerCol = 2
-
-		offset = 0.9
+				
 		try:
 			with Color(bgColor) as bg_c:
 				with Image(width = s_width, height = s_height, background= bg_c) as strip:
